@@ -8,7 +8,7 @@ var canvas;
 var coords = [];
 var mousePressed = false;
 var mode;
-
+var url = "https://city535369abcd.github.io/sketcher/";
 /*
 prepare the drawing canvas 
 */
@@ -143,9 +143,9 @@ load the class names
 */
 async function loadDict() {
     if (mode == 'ar')
-        loc = 'model/class_names_ar.txt'
+        loc = url + 'model/class_names_ar.txt'
     else
-        loc = 'model/class_names.txt'
+        loc = url + 'model/class_names.txt'
     
     await $.ajax({
         url: loc,
@@ -222,7 +222,7 @@ async function start(cur_mode) {
     mode = cur_mode
     
     //load the model 
-    model = await tf.loadModel('model/model.json')
+    model = await tf.loadModel(url + 'model/model.json')
     
     //warm up 
     model.predict(tf.zeros([1, 28, 28, 1]))
